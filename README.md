@@ -11,3 +11,6 @@ The functions in this repository are currently called
 `native_git_repository` and `new_native_git_repository`, where
 "native" is meant to connote "the system-native `git`
 implementation". The names are subject to change.
+
+These rules currently require bazel `HEAD`, as no released version yet
+supports implementing repository rules in Skylark.

@@ -1,11 +1,11 @@
 def _clone_or_update(ctx):
   st = ctx.execute(["bash", '-c', """
 set -ex
-mkdir -p '{dir}'
-cd '{dir}'
-if ! git rev-parse --git-dir >/dev/null 2>&1; then
-  git clone '{remote}' .
+if ! ( cd '{dir}' && git rev-parse --git-dir ) >/dev/null 2>&1; then
+  rm -rf '{dir}'
+  git clone '{remote}' '{dir}'
 fi
+cd '{dir}'
 git fetch
 git reset --hard {ref}
 git clean -xdf

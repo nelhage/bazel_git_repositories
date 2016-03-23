@@ -22,7 +22,7 @@ def _new_native_git_repository_implementation(ctx):
   if ctx.attr.build_file:
     ctx.symlink(ctx.attr.build_file, 'BUILD')
   else:
-    ctx.file(ctx.attr.build_file_contents, 'BUILD')
+    ctx.file('BUILD', ctx.attr.build_file_contents)
 
 def _native_git_repository_implementation(ctx):
   _clone_or_update(ctx)

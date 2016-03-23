@@ -14,3 +14,37 @@ implementation". The names are subject to change.
 
 These rules currently require bazel `HEAD`, as no released version yet
 supports implementing repository rules in Skylark.
+
+## Usage
+
+Add the following code to your `WORKSPACE` file:
+
+```python
+git_repository(
+    name = "bazel_git_repositories",
+    remote = "https://github.com/nelhage/bazel_git_repositories",
+    tag = "v1",
+)
+
+load(
+    "@bazel_git_repositories//:repositories.bzl",
+    "new_native_git_repository",
+    "native_git_repository",
+)
+```
+
+Then you should be able to use `native_git_repository` and `new_native_git_repository` rules:
+
+```python
+native_git_repository(
+    name = "my_repository",
+    remote = "git@github.com:MyAccount/my_repository.git",
+    ref = "master",
+)
+
+new_native_git_repository(
+	name = "my_other_repository",
+	remote = "git@github.com:MyAccount/my_other_repository.git"
+	build_file = "my_other_repository.BUILD",
+)
+```

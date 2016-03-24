@@ -12,8 +12,9 @@ The functions in this repository are currently called
 "native" is meant to connote "the system-native `git`
 implementation". The names are subject to change.
 
-These rules currently require bazel `HEAD`, as no released version yet
-supports implementing repository rules in Skylark.
+These rules currently require bazel `0.2.1` or newer. As of this
+writing, `0.2.1` is in rc and rc1 can be downloaded from
+https://storage.googleapis.com/bazel/0.2.1/rc1/index.html
 
 ## Usage
 

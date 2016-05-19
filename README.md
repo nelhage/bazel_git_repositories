@@ -22,13 +22,13 @@ Add the following code to your `WORKSPACE` file:
 
 ```python
 git_repository(
-    name = "bazel_git_repositories",
+    name = "com_github_nelhage_bazel_git_repositories",
     remote = "https://github.com/nelhage/bazel_git_repositories",
     tag = "v2",
 )
 
 load(
-    "@bazel_git_repositories//:repositories.bzl",
+    "@com_github_nelhage_bazel_git_repositories//:repositories.bzl",
     "new_native_git_repository",
     "native_git_repository",
 )

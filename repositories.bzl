@@ -27,6 +27,7 @@ git clean -xdf
 
 def _new_native_git_repository_implementation(ctx):
   _clone_or_update(ctx)
+  ctx.file('WORKSPACE', "workspace(name = \"{name}\")\n".format(name=ctx.name))
   if ctx.attr.build_file:
     ctx.symlink(ctx.attr.build_file, 'BUILD')
   else:

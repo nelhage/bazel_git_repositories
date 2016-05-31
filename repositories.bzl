@@ -14,8 +14,7 @@ if ! ( cd '{dir}' && git rev-parse --git-dir ) >/dev/null 2>&1; then
   git clone '{remote}' '{dir}'
 fi
 cd '{dir}'
-git fetch
-git reset --hard {ref}
+git reset --hard {ref} || (git fetch && git reset --hard {ref})
 git clean -xdf
   """.format(
     dir=ctx.path("."),

@@ -9,14 +9,16 @@ def _clone_or_update(ctx):
 
   st = ctx.execute(["bash", '-c', """
 set -ex
-if ! ( cd '{dir}' && git rev-parse --git-dir ) >/dev/null 2>&1; then
-  rm -rf '{dir}'
-  git clone '{remote}' '{dir}'
-fi
-cd '{dir}'
-git reset --hard {ref} || (git fetch && git reset --hard {ref})
-git clean -xdf
+( cd {working_dir} &&
+    if ! ( cd '{dir}' && git rev-parse --git-dir ) >/dev/null 2>&1; then
+      rm -rf '{dir}'
+      git clone '{remote}' '{dir}'
+    fi
+    cd '{dir}'
+    git reset --hard {ref} || (git fetch && git reset --hard {ref})
+    git clean -xdf )
   """.format(
+    working_dir=ctx.path(".").dirname,
     dir=ctx.path("."),
     remote=ctx.attr.remote,
     ref=ref,

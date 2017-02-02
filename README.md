@@ -1,4 +1,11 @@
-# Implementation of bazel git repositories using Skylark Repository rules
+# DEPRECATED -- Implementation of bazel git repositories using Skylark Repository rules
+
+This repository has been
+[upstreamed into bazel](https://github.com/bazelbuild/bazel/issues/1408),
+and is now deprecated. I am keeping it up in case any existing build
+rules depend on this path, but users should migrate.
+
+# Old README contents
 
 This repository reimplements Bazel's `git_repository` and
 `new_git_repository` rules using Skylark repository functions to shell
